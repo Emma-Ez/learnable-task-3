@@ -108,7 +108,7 @@ function adjustQuantity(productId, newQuantity) {
   function main() {
     displayProducts();
   
-    readline.question('Enter product ID to add to cart Or select from one of the following options\n"c" to view cart\n"r" to remove from cart \n"a" to adjust quantity\n"p" to checkout\n"q" to quit): ', (input) => {
+    readline.question('Enter product ID to add to cart Or select from one of the following options:\n"c" to view cart\n"r" to remove from cart \n"a" to adjust quantity\n"p" to checkout\n"q" to quit): ', (input) => {
       if (input.toLowerCase() === 'q') {
         console.log('Goodbye!, We hope you return soon');
         readline.close();
