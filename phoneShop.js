@@ -40,7 +40,7 @@ function addToCart(productId, quantity = 1) {
 }
 
  // Viewing the cart
- function viewCart() {
+function viewCart() {
   console.log('Your Cart:');
   if (cart.length === 0) {
     console.log('Your cart is empty.');
@@ -51,3 +51,33 @@ function addToCart(productId, quantity = 1) {
     console.log(`Total: ₦${calculateTotal()}`);
   }
 }
+
+  // calculating the total price in the cart
+  function calculateTotal() {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  }
+
+// Remove an item from the cart
+function removeFromCart(productId) {
+  const itemIndex = cart.findIndex(item => item.id === productId);
+
+  if (itemIndex !== -1) {
+    const removedItem = cart.splice(itemIndex, 1)[0];
+    console.log(`${removedItem.name} removed from the cart.`);
+  } else {
+    console.log(`Product with ID ${productId} not found in the cart.`);
+  }
+}
+
+// Adjust the quantity of an item in the cart
+function adjustQuantity(productId, newQuantity) {
+  const item = cart.find(item => item.id === productId);
+
+  if (item) {
+    item.quantity = newQuantity;
+    console.log(`${item.name} quantity adjusted to ${newQuantity} in the cart.`);
+  } else {
+    console.log(`Product with ID ${productId} not found in the cart.`);
+  }
+}
+  
