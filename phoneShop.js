@@ -39,3 +39,15 @@ function addToCart(productId, quantity = 1) {
   }
 }
 
+ // Viewing the cart
+ function viewCart() {
+  console.log('Your Cart:');
+  if (cart.length === 0) {
+    console.log('Your cart is empty.');
+  } else {
+    cart.forEach(item => {
+      console.log(`${item.name} - ₦${item.price} x ${item.quantity} = ₦${item.price * item.quantity}`);
+    });
+    console.log(`Total: ₦${calculateTotal()}`);
+  }
+}
