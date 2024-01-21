@@ -15,8 +15,11 @@ let cart = [];
 
  // Function to display the available products
 function displayProducts() {
-  console.log('');
+  console.log('Products Available in stock');
   products.forEach(product => {
     console.log(`${product.id}. ${product.name} - ₦${product.price}`);
   });
 }
+
+
+
