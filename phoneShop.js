@@ -5,9 +5,9 @@ const readline = require('readline').createInterface({
   
 // Array of Product catalogue
 const products = [
-    { id: 1, name: 'iPhone 15 Pro Max', price: 1800000 },
-    { id: 2, name: 'Samsung Galaxy S23', price: 1200000 },
-    { id: 3, name: 'Xiaomi 13T', price: 550000 }
+    { id: 1, name: 'iPhone 15 Pro Max', price: "1,800,000" },
+    { id: 2, name: 'Samsung Galaxy S23', price: "1,200,000" },
+    { id: 3, name: 'Xiaomi 13T', price: "550,000" }
   ];
 
  // Storing arrays of shopping cart
@@ -103,3 +103,43 @@ function adjustQuantity(productId, newQuantity) {
   
     return true;
   }
+
+  // Controlling the main application flow
+  function main() {
+    displayProducts();
+  
+    readline.question('Enter product ID to add to cart Or select from one of the following options\n"c" to view cart\n"r" to remove from cart \n"a" to adjust quantity\n"p" to checkout\n"q" to quit): ', (input) => {
+      if (input.toLowerCase() === 'q') {
+        console.log('Goodbye!, We hope you return soon');
+        readline.close();
+      } else if (input.toLowerCase() === 'c') {
+        viewCart();
+        main(); // Continue the loop after viewing cart
+      } else if (input.toLowerCase() === 'r') {
+        const removeId = readline.question('Enter product ID to remove from cart: ');
+        if (validateInput(removeId, products.length)) {
+          removeFromCart(parseInt(removeId));
+        }
+        main(); // Continue the loop after removing from cart
+      } else if (input.toLowerCase() === 'a') {
+        const adjustId = readline.question('Enter product ID to adjust quantity: ');
+        const newQuantity = readline.question('Enter new quantity: ');
+        if (validateInput(adjustId, products.length) && !isNaN(parseInt(newQuantity))) {
+          adjustQuantity(parseInt(adjustId), parseInt(newQuantity));
+        }
+        main(); // Continue the loop after adjusting quantity
+      } else if (input.toLowerCase() === 'p') {
+        processPayment();
+        readline.close();
+      } else {
+        if (validateInput(input, products.length)) {
+          const quantity = readline.question('Enter quantity (default is 1): ');
+          addToCart(parseInt(input), parseInt(quantity) || 1);
+        }
+        main(); // Continue the loop after adding a product
+      }
+    });
+  }
+  
+  // Start the application
+  main();
