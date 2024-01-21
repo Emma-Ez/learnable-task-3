@@ -89,6 +89,17 @@ function adjustQuantity(productId, newQuantity) {
   console.log('Processing payment...');
   console.log(`Payment successful! Total amount: ₦${paymentAmount}`);
   console.log('Thank you for your purchase!');
-  cart = []; // Clear the cart after successful payment
+  cart = []; // Clears the cart after successful payment
 }
+ 
+  // User input validation
+  function validateInput(input, maxId) {
+    const number = parseInt(input);
   
+    if (isNaN(number) || number <= 0 || number > maxId) {
+      console.log('Invalid input. Please enter a valid product ID.');
+      return false;
+    }
+  
+    return true;
+  }
