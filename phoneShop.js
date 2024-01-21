@@ -80,4 +80,15 @@ function adjustQuantity(productId, newQuantity) {
     console.log(`Product with ID ${productId} not found in the cart.`);
   }
 }
+
+ // Payment processing  logic
+ function processPayment() {
+  // Simulating payment processing logic
+  const paymentAmount = calculateTotal();
+
+  console.log('Processing payment...');
+  console.log(`Payment successful! Total amount: ₦${paymentAmount}`);
+  console.log('Thank you for your purchase!');
+  cart = []; // Clear the cart after successful payment
+}
   
