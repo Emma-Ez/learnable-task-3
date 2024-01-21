@@ -21,5 +21,21 @@ function displayProducts() {
   });
 }
 
+// Adding product to the cart with flow control
+function addToCart(productId, quantity = 1) {
+  const product = products.find(product => product.id === productId);
+  if (product) {
+    const existingItem = cart.find(item => item.id === productId);
 
+    if (existingItem) {
+      existingItem.quantity += quantity;
+    } else {
+      cart.push({ ...product, quantity });
+    }
+
+    console.log(`${product.name} added to cart!`);
+  } else {
+    console.log(`Product not found.`);
+  }
+}
 
