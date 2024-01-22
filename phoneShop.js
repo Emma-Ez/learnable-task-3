@@ -5,12 +5,12 @@ const readline = require('readline').createInterface({
   
 // Array of Product catalogue
 const products = [
-    { id: 1, name: 'iPhone 15 Pro Max', price: "1,800,000" },
-    { id: 2, name: 'Samsung Galaxy S23', price: "1,200,000" },
-    { id: 3, name: 'Xiaomi 13T', price: "550,000" },
-    { id: 4, name: 'Huawei Mate 30 Pro', price: "400,000" },
-    { id: 5, name: 'Nokia 3310 2024', price: "45,000" },
-    { id: 6, name: 'Samsung Galaxy A73', price: "250,000" }
+    { id: 1, name: 'iPhone 15 Pro Max', price: 1800000 },
+    { id: 2, name: 'Samsung Galaxy S23', price: 1200000 },
+    { id: 3, name: 'Xiaomi 13T', price: 550000},
+    { id: 4, name: 'Huawei Mate 30 Pro', price: 400000 },
+    { id: 5, name: 'Nokia 3310 2024', price: 45000},
+    { id: 6, name: 'Samsung Galaxy A73', price: 250000}
   ];
 
  // Storing arrays of shopping cart
@@ -51,7 +51,7 @@ function viewCart() {
     cart.forEach(item => {
       console.log(`${item.name} - ₦${item.price} x ${item.quantity} = ₦${item.price * item.quantity}`);
     });
-    console.log(`Total: ₦${calculateTotal()}`);
+    console.log(`Total(Excluding Shipping Cost): ₦${calculateTotal()}`);
   }
 }
 
